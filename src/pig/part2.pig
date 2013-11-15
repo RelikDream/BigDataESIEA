@@ -1,8 +1,8 @@
-fait = LOAD '../resources/data/faits/' USING PigStorage(';') AS(annee:chararray, mois:chararray, departement:chararray, fait:chararray, nombre:int);
+fait = LOAD 'src/resources/data/faits/' USING PigStorage(';') AS(annee:chararray, mois:chararray, departement:chararray, fait:chararray, nombre:int);
 filtered_fait = FOREACH fait GENERATE annee, departement, nombre;
 dept_group = GROUP filtered_fait BY (annee, departement);
 sum = FOREACH dept_group GENERATE FLATTEN(group) AS (annee, departement), SUM(filtered_fait.nombre) AS sum_fait;
-pop = LOAD '../resources/data/pop/' USING PigStorage(';') AS(
+pop = LOAD 'src/resources/data/pop/' USING PigStorage(';') AS(
 annee:chararray, 
 departement:chararray, 
 ensemble_0_19:int,

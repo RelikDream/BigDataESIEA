@@ -4,3 +4,6 @@
 .project
 target/git
 src/resources/data/
+sum_results/
+ratio_results
+*.log
